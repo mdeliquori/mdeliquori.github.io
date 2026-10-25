@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Matteo Deliquori | Mechanical Engineering Portfolio</title>
   <meta name="description" content="Portfolio of Matteo Deliquori, Mechanical Engineering student: design, analysis and Formula Student projects.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&amp;display=swap">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -13,13 +16,14 @@
   <header class="site-header">
     <nav class="nav container">
       <a href="#top" class="nav-logo">MD</a>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <span class="status">Open to internships</span>
     </nav>
   </header>
 
@@ -27,91 +31,138 @@
 
     <!-- ===== Hero ===== -->
     <section class="hero container">
-      <div class="hero-text">
-        <p class="eyebrow">Mechanical Engineering Student</p>
-        <h1>Matteo Deliquori</h1>
-        <p class="lead">
-          3rd year Mechanical Engineering student and Formula Student team member.
-          I design, analyse and build mechanical systems.
-        </p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">View projects</a>
-          <!-- Drop your CV into assets/docs/ and update the filename below -->
-          <a href="assets/docs/CV.pdf" class="btn btn-outline">Download CV</a>
+      <div class="sheet blueprint">
+        <ol class="zones zones-x top" aria-hidden="true">
+          <li>1</li><li>2</li><li>3</li><li>4</li><li class="wide">5</li><li class="wide">6</li>
+        </ol>
+        <ol class="zones zones-x bottom" aria-hidden="true">
+          <li>1</li><li>2</li><li>3</li><li>4</li><li class="wide">5</li><li class="wide">6</li>
+        </ol>
+        <ol class="zones zones-y left" aria-hidden="true">
+          <li>A</li><li>B</li><li>C</li>
+        </ol>
+        <ol class="zones zones-y right" aria-hidden="true">
+          <li>A</li><li>B</li><li>C</li>
+        </ol>
+
+        <div class="sheet-frame">
+          <div class="hero-text">
+            <p class="hero-kicker">Mechanical engineering student</p>
+            <h1><span>Matteo</span> <span>Deliquori</span></h1>
+            <p class="lead">
+              3rd year Mechanical Engineering student and Formula Student team member.
+              I design, analyse and build mechanical systems.
+            </p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">View projects</a>
+              <!-- Drop your CV into assets/docs/ and update the filename below -->
+              <a href="assets/docs/CV.pdf" class="btn btn-outline">Download CV</a>
+            </div>
+          </div>
+
+          <dl class="title-block">
+            <div><dt>Drawn by</dt><dd>M. Deliquori</dd></div>
+            <div><dt>Subject</dt><dd>Engineering portfolio</dd></div>
+            <div><dt>Scale</dt><dd>1:1</dd></div>
+            <div><dt>Sheet</dt><dd>1 of 1</dd></div>
+          </dl>
         </div>
       </div>
-      <div class="hero-image">
-        <!-- Replace with assets/images/profile/profile.jpg -->
-        <div class="placeholder">Profile photo</div>
+    </section>
+
+    <!-- ===== Projects ===== -->
+    <section id="projects" class="section container">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <div class="filters" role="group" aria-label="Filter projects">
+          <button type="button" class="filter" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter" data-filter="hardware" aria-pressed="false">Hardware</button>
+          <button type="button" class="filter" data-filter="software" aria-pressed="false">Software</button>
+        </div>
+      </div>
+
+      <div class="project-grid">
+
+        <!-- Copy an <article> block for each new project. data-type is "hardware" or "software". -->
+        <article class="project-card" data-type="hardware">
+          <div class="card-plate">
+            <img src="assets/images/projects/ip-2025/ip-2025-servo-mount-servo.png" alt="CAD render of the servo mount with the servo fitted" loading="lazy">
+          </div>
+          <h3><a href="projects/ip-2025-servo-mount.html" class="card-link">Servo mount</a></h3>
+          <p>[Placeholder: one line on what the mount holds and why.]</p>
+          <div class="card-meta"><span class="tag">Hardware</span></div>
+        </article>
+
+        <!-- No page yet: add a .card-link and remove .is-soon once the write-up exists -->
+        <article class="project-card is-soon" data-type="hardware">
+          <div class="card-plate">
+            <img src="assets/images/projects/amz/amz-bracket.png" alt="CAD render of the AMZ bracket" loading="lazy">
+          </div>
+          <h3>AMZ bracket</h3>
+          <p>[Placeholder: one line on the bracket.]</p>
+          <div class="card-meta"><span class="tag">Hardware</span><span class="tag tag-soon">Write-up soon</span></div>
+        </article>
+
+        <article class="project-card is-soon" data-type="software">
+          <div class="card-plate">
+            <pre class="code-plate" aria-hidden="true">import numpy as np
+
+def predict(x, w):
+    return x @ w
+
+for epoch in range(n):
+    loss = fit(batch)
+    log(epoch, loss)</pre>
+          </div>
+          <h3>SML</h3>
+          <p>[Placeholder: one line on the project.]</p>
+          <div class="card-meta"><span class="tag">Software</span><span class="tag tag-soon">Coming soon</span></div>
+        </article>
+
+        <article class="project-card is-soon" data-type="software">
+          <div class="card-plate">
+            <pre class="code-plate" aria-hidden="true">$ git clone repo
+$ cd repo
+$ make demo
+
+&gt; build ok
+&gt; serving on :8080</pre>
+          </div>
+          <h3>Hackathon project</h3>
+          <p>[Placeholder: one line on what was built.]</p>
+          <div class="card-meta"><span class="tag">Software</span><span class="tag tag-soon">Coming soon</span></div>
+        </article>
+
       </div>
     </section>
 
     <!-- ===== About ===== -->
     <section id="about" class="section container">
-      <h2>About</h2>
-      <p>
-        A short paragraph about you: where you study, what areas of mechanical engineering
-        interest you most (e.g. vehicle dynamics, structures, thermofluids), and what kind of
-        internship or role you're looking for.
-      </p>
-    </section>
-
-    <!-- ===== Projects ===== -->
-    <section id="projects" class="section container">
-      <h2>Projects</h2>
-      <div class="project-grid">
-
-        <!-- Copy this <article> block for each new project -->
-        <article class="project-card">
-          <!-- Replace with <img src="assets/images/projects/..." alt="..."> or a render from assets/renders/ -->
-          <div class="placeholder">Project image / render</div>
-          <div class="project-body">
-            <h3>Formula Student: [Sub-system]</h3>
-            <p>One or two sentences on what you designed and the result.</p>
-            <ul class="tags">
-              <li>SolidWorks</li>
-              <li>FEA</li>
-              <li>Manufacturing</li>
-            </ul>
-            <a href="projects/project-template.html" class="card-link">Read more &rarr;</a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="placeholder">Project image / render</div>
-          <div class="project-body">
-            <h3>Project Title</h3>
-            <p>Short description of the problem, your approach and the outcome.</p>
-            <ul class="tags">
-              <li>CAD</li>
-              <li>MATLAB</li>
-            </ul>
-            <a href="projects/project-template.html" class="card-link">Read more &rarr;</a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="placeholder">Project image / render</div>
-          <div class="project-body">
-            <h3>Project Title</h3>
-            <p>Short description of the problem, your approach and the outcome.</p>
-            <ul class="tags">
-              <li>CFD</li>
-              <li>Testing</li>
-            </ul>
-            <a href="projects/project-template.html" class="card-link">Read more &rarr;</a>
-          </div>
-        </article>
-
+      <div class="section-head">
+        <h2>About</h2>
+      </div>
+      <div class="about-grid">
+        <!-- Replace with <img src="assets/images/profile/profile.jpg" alt="Portrait of Matteo Deliquori"> -->
+        <div class="placeholder">Profile photo</div>
+        <div>
+          <p class="serif">
+            [Placeholder: a short paragraph about you. Where you study, which areas of mechanical
+            engineering interest you most (e.g. vehicle dynamics, structures, thermofluids), and what
+            kind of internship or role you're looking for.]
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- ===== Skills ===== -->
     <section id="skills" class="section container">
-      <h2>Skills</h2>
+      <div class="section-head">
+        <h2>Skills</h2>
+      </div>
       <div class="skills-grid">
         <div>
-          <h3>CAD &amp; Design</h3>
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 28 10v12L16 29 4 22V10Z"/><path d="M4 10l12 7 12-7M16 17v12"/></svg>
+          <h3>CAD &amp; design</h3>
           <ul>
             <li>SolidWorks</li>
             <li>Fusion 360</li>
@@ -119,6 +170,7 @@
           </ul>
         </div>
         <div>
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 29h26M3 29V3"/><path d="M5 24c5-1 7-14 12-14s6 9 12 9"/></svg>
           <h3>Analysis</h3>
           <ul>
             <li>FEA (ANSYS)</li>
@@ -127,6 +179,7 @@
           </ul>
         </div>
         <div>
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="5"/><path d="M16 3v5M16 24v5M3 16h5M24 16h5M6.8 6.8l3.5 3.5M21.7 21.7l3.5 3.5M6.8 25.2l3.5-3.5M21.7 10.3l3.5-3.5"/></svg>
           <h3>Manufacturing</h3>
           <ul>
             <li>CNC machining</li>
@@ -139,23 +192,32 @@
 
     <!-- ===== Contact ===== -->
     <section id="contact" class="section container">
-      <h2>Contact</h2>
-      <p>Open to internships and placement opportunities. Get in touch:</p>
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p>Open to internships and placement opportunities.</p>
+      </div>
+      <a href="mailto:your.email@example.com" class="contact-mail">your.email@example.com</a>
       <ul class="contact-links">
-        <li><a href="mailto:your.email@example.com">your.email@example.com</a></li>
-        <li><a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://github.com/mdeliquori" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/yourprofile" class="text-link" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/mdeliquori" class="text-link" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="assets/docs/CV.pdf" class="text-link">CV (PDF)</a></li>
       </ul>
     </section>
 
   </main>
 
+  <!-- ===== Footer ===== -->
   <footer class="site-footer">
     <div class="container">
       <p>&copy; <span id="year"></span> Matteo Deliquori</p>
+      <a href="#top">Back to top</a>
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

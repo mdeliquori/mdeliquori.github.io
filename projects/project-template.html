@@ -4,56 +4,153 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Project Title | Matteo Deliquori</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </head>
 <body>
-  <!-- Copy this file for each project, e.g. projects/fs-suspension.html -->
+  <!-- Hardware project template. Copy this file for each hardware project, e.g. projects/fs-suspension.html -->
 
+  <!-- ===== Header / navigation ===== -->
   <header class="site-header">
     <nav class="nav container">
       <a href="../index.html" class="nav-logo">MD</a>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
       <ul class="nav-links">
-        <li><a href="../index.html#about">About</a></li>
         <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#about">About</a></li>
         <li><a href="../index.html#skills">Skills</a></li>
         <li><a href="../index.html#contact">Contact</a></li>
       </ul>
+      <span class="status">Open to internships</span>
     </nav>
   </header>
 
-  <main class="project-page container">
-    <a href="../index.html#projects" class="back-link">&larr; Back to projects</a>
+  <main id="top">
 
-    <h1>Project Title</h1>
-    <ul class="tags">
-      <li>SolidWorks</li>
-      <li>FEA</li>
-    </ul>
+    <!-- ===== Model stage ===== -->
+    <!-- The model turns 360 degrees over the scroll while the steps swap. Add or remove
+         .model-step items freely; the scroll length follows the step count. -->
+    <section class="model-stage blueprint" aria-label="3D model walkthrough">
+      <div class="model-inner container">
+        <div class="model-title">
+          <a href="../index.html#projects" class="back-link">Back to projects</a>
+          <p class="model-kicker">Hardware project, [year]</p>
+          <h1>Project title</h1>
+        </div>
 
-    <div class="placeholder">Hero image / render (assets/renders/...)</div>
+        <div class="model-view">
+          <!-- .glb in assets/models/, poster render in assets/renders/ -->
+          <model-viewer
+            src="../assets/models/zahnrad-14.glb"
+            poster="../assets/renders/zahnrad-14-poster.png"
+            alt="[Describe the part shown in the 3D model]"
+            environment-image="neutral"
+            tone-mapping="neutral"
+            exposure="0.95"
+            shadow-intensity="0.6"
+            shadow-softness="1"
+            camera-orbit="0deg 64deg auto"
+            interpolation-decay="30"
+            interaction-prompt="none"
+            disable-zoom
+            disable-pan
+            loading="eager"></model-viewer>
+        </div>
 
-    <h2>Overview</h2>
-    <p>What was the problem or goal? What were the constraints and requirements?</p>
+        <ol class="model-steps">
+          <li class="model-step">
+            <h2><span class="step-index">01</span>The brief</h2>
+            <p>[What the part does, where it sits, and why it was needed.]</p>
+          </li>
+          <li class="model-step">
+            <h2><span class="step-index">02</span>Constraints</h2>
+            <p>[Loads, space, weight, material and manufacturing limits.]</p>
+          </li>
+          <li class="model-step">
+            <h2><span class="step-index">03</span>Design</h2>
+            <p>[Key design decisions and the analysis behind them.]</p>
+          </li>
+          <li class="model-step">
+            <h2><span class="step-index">04</span>Result</h2>
+            <p>[What was built or tested, and how it performed.]</p>
+          </li>
+        </ol>
 
-    <h2>Design &amp; Analysis</h2>
-    <p>Your approach, key design decisions, calculations and simulations.</p>
+        <div class="model-hud" aria-hidden="true">
+          <span class="model-count">01 / 04</span>
+          <span class="model-bar"><span></span></span>
+          <span>Scroll to turn the model</span>
+        </div>
+      </div>
+      <p class="model-side-label" aria-hidden="true">[Project code] / [Part name]</p>
+    </section>
 
-    <figure>
-      <div class="placeholder">Figure (assets/images/projects/...)</div>
-      <figcaption>Figure 1: Caption describing the image.</figcaption>
-    </figure>
+    <!-- ===== Gallery ===== -->
+    <!-- The static renders/photos are the primary visual; the 3D stage above is an extra. -->
+    <section class="section container">
+      <div class="gallery">
+        <figure>
+          <div class="placeholder">Render or photo (assets/images/projects/[slug]/...)</div>
+          <figcaption>[Caption describing the image.]</figcaption>
+        </figure>
+        <figure>
+          <div class="placeholder">Render or photo (assets/images/projects/[slug]/...)</div>
+          <figcaption>[Caption describing the image.]</figcaption>
+        </figure>
+      </div>
+    </section>
 
-    <h2>Results</h2>
-    <p>Outcomes, test data, lessons learned, and what you'd do differently.</p>
+    <!-- ===== Write-up ===== -->
+    <section class="section container">
+      <dl class="meta-strip">
+        <div><dt>Role</dt><dd>[Your role]</dd></div>
+        <div><dt>Team</dt><dd>[Team or solo]</dd></div>
+        <div><dt>Duration</dt><dd>[e.g. 3 months]</dd></div>
+        <div><dt>Tools</dt><dd>[e.g. SolidWorks, ANSYS]</dd></div>
+      </dl>
+
+      <div class="writeup">
+        <h2>Overview</h2>
+        <p class="serif">[What was the problem or goal? What were the constraints and requirements?]</p>
+      </div>
+      <div class="writeup">
+        <h2>Design &amp; analysis</h2>
+        <p class="serif">[Your approach, key design decisions, calculations and simulations.]</p>
+      </div>
+      <div class="writeup">
+        <h2>Results</h2>
+        <p class="serif">[Outcomes, test data, lessons learned, and what you'd do differently.]</p>
+      </div>
+
+      <dl class="figures">
+        <div><dt>[Key figure, e.g. mass]</dt><dd>[value]</dd></div>
+        <div><dt>[Key figure, e.g. safety factor]</dt><dd>[value]</dd></div>
+        <div><dt>[Key figure, e.g. cost]</dt><dd>[value]</dd></div>
+      </dl>
+    </section>
+
+    <div class="project-end container">
+      <a href="../index.html#projects" class="text-link">All projects</a>
+      <a href="../index.html#contact" class="text-link">Get in touch</a>
+    </div>
+
   </main>
 
+  <!-- ===== Footer ===== -->
   <footer class="site-footer">
     <div class="container">
       <p>&copy; <span id="year"></span> Matteo Deliquori</p>
+      <a href="#top">Back to top</a>
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/model-scroll.js"></script>
 </body>
 </html>

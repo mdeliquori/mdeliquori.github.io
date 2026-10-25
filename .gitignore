@@ -1,0 +1,6 @@
+# Source CAD files: convert to .glb (tools/3mf-to-glb.py) and keep the originals out of the repo
+*.3mf
+*.stl
+*.step
+*.stp
+*.f3d

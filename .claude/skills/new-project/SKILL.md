@@ -14,6 +14,8 @@ Add a new project to the portfolio: $ARGUMENTS
    - tool/skill tags (e.g. SolidWorks, FEA, MATLAB),
    - whether there are images, renders or a 3D model. Don't invent results, numbers or claims — use the template's placeholder prompts where content is missing.
 
+   Read `DESIGN.md` for layout and motion rules and `CONTENT.md` for where content goes.
+
 2. **Pick a slug**: lowercase-hyphenated, e.g. `fs-suspension`. Page goes at `projects/<slug>.html`.
 
 3. **Create the page** by copying `projects/project-template.html`:
@@ -24,6 +26,7 @@ Add a new project to the portfolio: $ARGUMENTS
 
 4. **Media**:
    - Reference images as `../assets/images/projects/<slug>/<slug>-*.png` or `../assets/renders/<slug>-*.png`, with real `alt` text. If files don't exist yet, keep a `<div class="placeholder">` naming the expected path.
+   - Convert a `.3mf` with `python tools/3mf-to-glb.py <in>.3mf assets/models/<slug>.glb assets/renders/<slug>-poster.png`, then make the poster background transparent.
    - For a 3D model, point the template's existing `<model-viewer>` at `../assets/models/<slug>.glb` and give it a transparent `poster`. Don't add `camera-controls`: `model-scroll.js` turns them on only in the reduced-motion fallback. Keep the static renders in the gallery.
 
 5. **Add the card** to `index.html` inside `.project-grid`: copy an existing `<article class="project-card">` block. Set `data-type`, the title (wrapped in `<a class="card-link">` to `projects/<slug>.html`), the summary and tags, and the image path without `../`. Remove `is-soon` and the "soon" tag. If replacing a placeholder card that still links to `project-template.html`, replace that one instead of adding.

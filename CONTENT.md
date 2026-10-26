@@ -35,7 +35,7 @@ At the top, in `<head>`:
 | `<p class="hero-kicker">` | The small line above your name |
 | `<h1><span>Matteo</span> <span>De Liquori</span></h1>` | Your name. Each `<span>` is one line |
 | `<p class="lead">` | The intro paragraph under your name |
-| `<a href="assets/docs/CV.pdf" …>Download CV</a>` | Points at your CV file, see [Files](#files-and-how-theyre-linked) |
+| `<a href="assets/docs/CV.pdf" …>View CV</a>` | Opens your CV in a new tab, so visitors stay on the site. See [Files](#files-and-how-theyre-linked) |
 | `<dl class="title-block">` | The drawing title block in the corner. Each row is `<dt>label</dt><dd>value</dd>` |
 | `<svg class="sheet-drawing …">` | The two gear views on the sheet, see [Drawing views](#drawing-views-on-the-homepage) |
 
@@ -103,6 +103,11 @@ There are three columns. Each has an icon (`<svg>`), a heading (`<h3>`) and a li
 - **LinkedIn:** replace `yourprofile` in `https://www.linkedin.com/in/yourprofile`.
 - **GitHub** is already set to `https://github.com/mdeliquori`.
 - The short line next to the "Contact" heading is the `<p>` in `<div class="section-head">`.
+- **CV (PDF)** opens `assets/docs/CV.pdf` in a new tab. To replace the CV, save the new file under the same name.
+- **Adding a portfolio PDF later:** save it as `assets/docs/portfolio.pdf`, then add a link next to the CV one, keeping `target="_blank" rel="noopener"` so it opens in a new tab:
+  ```html
+  <li><a href="assets/docs/portfolio.pdf" class="text-link" target="_blank" rel="noopener">Portfolio (PDF)</a></li>
+  ```
 
 ---
 

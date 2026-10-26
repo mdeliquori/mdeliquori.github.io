@@ -53,7 +53,7 @@ GitHub Pages is case-sensitive; Windows is not. A link that works locally can 40
 
 ## Placeholder content
 
-The name, email, LinkedIn and `assets/docs/CV.pdf` are real. The About text, profile photo and project images are still placeholders. Unfilled text is in `[square brackets]`, and `CONTENT.md` lists where everything goes. Never invent real-looking personal details or project results. Leave a clear placeholder and tell the user.
+The name, email, LinkedIn, profile photo and `assets/docs/CV.pdf` are real. The About text and project images are still placeholders. Unfilled text is in `[square brackets]`, and `CONTENT.md` lists where everything goes. Never invent real-looking personal details or project results. Leave a clear placeholder and tell the user.
 
 ## Git
 
@@ -68,7 +68,7 @@ The redesign is complete and merged into `main` locally. It needs the user to pu
 - `DESIGN.md`, `CONTENT.md` and `tools/3mf-to-glb.py`.
 
 - **Placeholders the user fills in (see `CONTENT.md`):**
-  - About text, profile photo,
+  - About text,
   - all project copy and key figures,
   - a `.glb` of the servo mount. `assets/models/zahnrad-14.glb` is a stand-in gear.
 - **Next:**

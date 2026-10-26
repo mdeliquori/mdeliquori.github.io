@@ -88,9 +88,7 @@ Running `/new-project` in Claude Code does this for you.
 **Software tiles** show a faint code snippet (`<pre class="code-plate">`) instead of an image. Edit the snippet freely, or swap it for an `<img>` like the hardware tiles.
 
 ### About (`===== About =====`)
-- **Photo:**
-  1. Save it as `assets/images/profile/profile.jpg`.
-  2. Replace `<div class="placeholder">Profile photo</div>` with the `<img>` in the comment just above it.
+- **Photo:** `<img class="about-photo">` shows `assets/images/profile/profile.jpg`, cropped to 4:5 around the face. To change it, save a new photo under the same name. If it isn't square, update the `width` and `height` on the `<img>` to its pixel size.
 - **Text:** the `<p class="serif">` paragraph. Add more paragraphs as more `<p class="serif">…</p>` lines.
 
 ### Skills (`===== Skills =====`)
@@ -156,7 +154,7 @@ Only put real numbers in the key figures. If you don't have one yet, leave the p
 ### Where files live
 ```
 assets/
-  images/profile/profile.jpg                  About photo (not added yet)
+  images/profile/profile.jpg                  About photo
   images/projects/<project>/<file>.png        Project renders and photos, one folder per project
       ip-2025/ip-2025-servo-mount.png
       ip-2025/ip-2025-servo-mount-servo.png

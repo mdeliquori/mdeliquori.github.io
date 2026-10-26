@@ -423,7 +423,15 @@ p { margin: 0; }
   gap: 48px;
   align-items: start;
 }
-.about-grid .placeholder { aspect-ratio: 4 / 5; }
+.about-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 30%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
 
 /* ===== Skills ===== */
 .skills-grid {
@@ -655,7 +663,7 @@ model-viewer {
   .project-card p { display: none; }
 
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
-  .about-grid .placeholder { max-width: 220px; }
+  .about-photo { max-width: 220px; }
 
   .skills-grid { grid-template-columns: 1fr; }
   .skills-grid > div { padding: 28px; }

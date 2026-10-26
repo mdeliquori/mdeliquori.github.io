@@ -11,7 +11,7 @@ This is the single source of truth for how the portfolio looks and moves. It com
 
 ## Concept
 
-**A technical drawing in light on black.**
+**A technical drawing in light on black.** In light mode, the same drawing printed on paper: near-neutral white with black ink, never cream.
 - The site reads like a mechanical drawing sheet: thin lines, a grid, zone markers, a title block.
 - The parts are the only solid objects.
 - Type is mono and calm, and gets its hierarchy from size, not weight.
@@ -25,24 +25,31 @@ This is the single source of truth for how the portfolio looks and moves. It com
 All tokens are CSS variables in `:root` of `assets/css/style.css`. Never hardcode values.
 
 ### Colour
-| Variable | Value | Use |
-|---|---|---|
-| `--color-bg` | `#101010` | Page canvas |
-| `--color-bg-deep` | `#080808` | Tile plates, placeholder boxes |
-| `--color-text` | `#f3f3f3` | Headings, primary text |
-| `--color-muted` | `#9c9c9c` | Secondary text, captions, labels, nav |
-| `--color-ash` | `#c1c1c1` | Serif body text |
-| `--color-border` | `#212121` | Default 1px hairline: sections, cards, tables |
-| `--color-border-strong` | `#474747` | Sheet border, dashed "soon" borders, link underlines |
-| `--color-white` | `#ffffff` | Primary pill fill, focus ring |
-| `--color-gold` | `#6f6759` | Icon strokes, drawing zone markers and thin drawing lines only, never text |
-| `--color-live` | `#98ff38` | The status dot only |
-| `--grid-line` | `rgba(243,243,243,.05)` | Blueprint grid lines |
-| `--grid-line-strong` | `rgba(243,243,243,.09)` | Small grid inside tile plates |
-| `--spotlight` | `rgba(243,243,243,.07)` | Conic spotlight beam |
-| `--header-bg` | `rgba(16,16,16,.82)` | Translucent sticky header (with blur) |
+Every colour token is `light-dark(<light>, <dark>)`. Themes swap only these tokens; layout, type and motion are identical. A new colour needs both values. The light values were checked at ≥ 4.5:1 for text and ≥ 3:1 for strokes.
 
-There's no accent colour. Hierarchy comes from contrast between chalk, muted and ash.
+| Variable | Dark | Light | Use |
+|---|---|---|---|
+| `--color-bg` | `#101010` | `#f5f5f4` | Page canvas |
+| `--color-bg-deep` | `#080808` | `#ebebe9` | Tile plates, placeholder boxes |
+| `--color-text` | `#f3f3f3` | `#141414` | Headings, primary text |
+| `--color-muted` | `#9c9c9c` | `#63635f` | Secondary text, captions, labels, nav |
+| `--color-ash` | `#c1c1c1` | `#34342f` | Serif body text |
+| `--color-border` | `#212121` | `#dcdcd8` | Default 1px hairline: sections, cards, tables |
+| `--color-border-strong` | `#474747` | `#a9a9a4` | Sheet border, dashed "soon" borders, link underlines |
+| `--color-contrast` | `#ffffff` | `#101010` | Maximum contrast: primary pill fill, focus ring, hovers |
+| `--color-gold` | `#6f6759` | `#8a7e69` | Icon strokes, drawing zone markers and thin drawing lines only, never text |
+| `--color-live` | `#98ff38` | `#2e9e1c` | The status dot only |
+| `--grid-line` | `rgba(243,243,243,.05)` | `rgba(20,20,20,.06)` | Blueprint grid lines |
+| `--grid-line-strong` | `rgba(243,243,243,.09)` | `rgba(20,20,20,.09)` | Small grid inside tile plates |
+| `--spotlight` | `rgba(243,243,243,.07)` | `rgba(20,20,20,.04)` | Conic spotlight beam |
+| `--header-bg` | `rgba(16,16,16,.82)` | `rgba(245,245,244,.85)` | Translucent sticky header (with blur) |
+
+There's no accent colour. Hierarchy comes from contrast between text, muted and ash.
+
+**Theme selection:**
+- `:root { color-scheme: light dark }` follows the system, even without JS.
+- `assets/js/theme.js`, loaded in `<head>`, sets `<html data-theme="light|dark">` from the saved toggle choice (`localStorage` key `theme`) or the system. `data-theme` pins `color-scheme`.
+- With nothing saved, the page keeps following system changes.
 
 ### Type
 | Variable | Family | Use |
@@ -90,8 +97,9 @@ There's no accent colour. Hierarchy comes from contrast between chalk, muted and
 - **Header (`.site-header`):** sticky and translucent, with a 1px bottom hairline. It holds:
   - the `MD` wordmark,
   - muted nav links on the right,
-  - the `.status` pill with the green dot.
-  - On phones, the links collapse behind a "Menu" button and the pill hides.
+  - the `.status` pill with the green dot,
+  - the `.theme-toggle` at the far right: a 32px square with the pill's border. It shows the mode you'd switch to, a sun in dark mode and a moon in light mode (16px, 1.5px `currentColor` strokes). The button is `hidden` until `theme.js` runs, so there's no dead button without JS. The switch is instant, with no transition.
+  - On phones, the links collapse behind a "Menu" button and the pill hides; the toggle stays next to Menu.
 - **Section (`.section`):** a 1px top hairline and generous vertical padding. Sections are separated by lines, never by background colour.
 - **Section head (`.section-head`):** the heading on the left, with an optional muted line or controls on the right.
 - **Buttons:**

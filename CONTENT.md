@@ -26,6 +26,7 @@ At the top, in `<head>`:
 
 ### Header (`===== Header / navigation =====`)
 - `<span class="status">Open to internships</span>` is the pill with the green dot. Change the text or delete the whole `<span>`.
+- `<button class="theme-toggle">` is the light/dark switch. Visitors start in their system's mode, and the site remembers their choice.
 - **This header is copied into every page.** If you change it, make the same change in each file in `projects/`, including the template.
 
 ### Hero (`===== Hero =====`)

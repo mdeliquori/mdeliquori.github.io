@@ -21,6 +21,7 @@ Personal portfolio for a mechanical engineering student, aimed at recruiters. Se
 - 2-space indent everywhere; JS uses double quotes and semicolons.
 - Plain hyphenated class names (`.project-card`, `.btn-outline`), not BEM. Reuse existing classes before adding new ones.
 - Colors, radius, max-width, fonts, type scale and grid live as variables in `:root` in `assets/css/style.css`. Use them and don't hardcode values.
+- Light and dark themes: every colour token is `light-dark(<light>, <dark>)`, so a new colour needs both values. `assets/js/theme.js` (in every page's `<head>`) applies the toggle's saved choice.
 - **Design: read `DESIGN.md` before any visual or motion change.** It is the single source of truth for tokens, components, layouts and every GSAP animation. Keep it in sync when the design changes.
   - It consolidates the references in `assets/design guide/` (Hyperstudio, AuthKit, ORYZO) and neal.fun. Only open those for background.
 - Text is JetBrains Mono except long-form copy, which uses `.serif` (Source Serif 4).

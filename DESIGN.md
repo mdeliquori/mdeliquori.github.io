@@ -37,14 +37,20 @@ Every colour token is `light-dark(<light>, <dark>)`. Themes swap only these toke
 | `--color-border` | `#212121` | `#dcdcd8` | Default 1px hairline: sections, cards, tables |
 | `--color-border-strong` | `#474747` | `#a9a9a4` | Sheet border, dashed "soon" borders, link underlines |
 | `--color-contrast` | `#ffffff` | `#101010` | Maximum contrast: primary pill fill, focus ring, hovers |
-| `--color-gold` | `#6f6759` | `#8a7e69` | Icon strokes, drawing zone markers and thin drawing lines only, never text |
+| `--color-gold` | `#6f6759` | `#8a7e69` | Skills icon strokes only, never text |
 | `--color-live` | `#98ff38` | `#2e9e1c` | The status dot only |
-| `--grid-line` | `rgba(243,243,243,.05)` | `rgba(20,20,20,.06)` | Blueprint grid lines |
-| `--grid-line-strong` | `rgba(243,243,243,.09)` | `rgba(20,20,20,.09)` | Small grid inside tile plates |
+| `--color-ink` | `#9c9c9c` | `#161616` | Drawing sheet: visible outlines and dimension text |
+| `--color-ink-thin` | `#6f6759` | `#3b3b3b` | Drawing sheet: centre, hatch, cut and dimension lines, arrowheads, zone numbers |
+| `--color-frame` | `#474747` | `#1c1c1c` | Drawing sheet: outer border |
+| `--color-frame-thin` | `#212121` | `#8a8a86` | Drawing sheet: inner frame, zone dividers, title-block rules |
+| `--grid-line` | `rgba(243,243,243,.05)` | `rgba(20,20,20,.10)` | Blueprint grid lines |
+| `--grid-line-strong` | `rgba(243,243,243,.09)` | `rgba(20,20,20,.13)` | Small grid inside tile plates |
 | `--spotlight` | `rgba(243,243,243,.07)` | `rgba(20,20,20,.04)` | Conic spotlight beam |
 | `--header-bg` | `rgba(16,16,16,.82)` | `rgba(245,245,244,.85)` | Translucent sticky header (with blur) |
 
 There's no accent colour. Hierarchy comes from contrast between text, muted and ash.
+
+The `--color-ink*` and `--color-frame*` tokens keep the dark sheet exactly as before (they equal muted, gold, border-strong and border), but in light mode they turn the hero sheet and gear views into black ink on paper, like a printed technical drawing.
 
 **Theme selection:**
 - `:root { color-scheme: light dark }` follows the system, even without JS.
@@ -134,10 +140,10 @@ Contact  large email, links
   - `.drawing-iso`: iso pictorial, top right of the frame, no dimensions. Outlines come from `tools/mesh-to-svg.py`, with hidden lines removed.
   - `.drawing-views`: front view plus section A–A, bottom left beside the title block, drawn at 3.5px per mm. It uses first-angle projection (the section sits to the right) and ISO 2203 gear conventions (teeth unhatched, pitch line dash-dot). Dimension arrows come from the `#dim-arrow` marker.
   - Line types (ISO 128):
-    - `.edge`: visible outlines, `--color-muted`, wide.
-    - `.thin`: centre, hatch, cut and dimension lines, `--color-gold`, narrow.
+    - `.edge`: visible outlines, `--color-ink`, wide.
+    - `.thin`: centre, hatch, cut and dimension lines, `--color-ink-thin`, narrow.
     - `.center`: dash-dot.
-    - `.dim-text`: `--color-muted`.
+    - `.dim-text`: `--color-ink`.
   - Phones: the iso view sits small above the text and the dimensioned strip is hidden.
 - **Tile (`.project-card`):**
   - a square `.card-plate` (8px radius, 1px border, a 20px grid on `--color-bg-deep`) with the image cropped to fill,

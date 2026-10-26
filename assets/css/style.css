@@ -15,9 +15,14 @@
   --color-contrast: light-dark(#101010, #ffffff);
   --color-gold: light-dark(#8a7e69, #6f6759);
   --color-live: light-dark(#2e9e1c, #98ff38);
+  /* Drawing sheet linework: black ink on paper in light mode */
+  --color-ink: light-dark(#161616, #9c9c9c);
+  --color-ink-thin: light-dark(#3b3b3b, #6f6759);
+  --color-frame: light-dark(#1c1c1c, #474747);
+  --color-frame-thin: light-dark(#8a8a86, #212121);
 
-  --grid-line: light-dark(rgba(20, 20, 20, 0.06), rgba(243, 243, 243, 0.05));
-  --grid-line-strong: light-dark(rgba(20, 20, 20, 0.09), rgba(243, 243, 243, 0.09));
+  --grid-line: light-dark(rgba(20, 20, 20, 0.1), rgba(243, 243, 243, 0.05));
+  --grid-line-strong: light-dark(rgba(20, 20, 20, 0.13), rgba(243, 243, 243, 0.09));
   --grid-size: 80px;
   --spotlight: light-dark(rgba(20, 20, 20, 0.04), rgba(243, 243, 243, 0.07));
   --header-bg: light-dark(rgba(245, 245, 244, 0.85), rgba(16, 16, 16, 0.82));
@@ -243,7 +248,7 @@ p { margin: 0; }
 
 .sheet {
   position: relative;
-  border: 1px solid var(--color-border-strong);
+  border: 1px solid var(--color-frame);
   padding: 28px;
   min-height: calc(100svh - var(--header-height) - 48px);
   display: flex;
@@ -257,7 +262,7 @@ p { margin: 0; }
   margin: 0;
   padding: 0;
   list-style: none;
-  color: var(--color-gold);
+  color: var(--color-ink-thin);
   font-size: 11px;
   pointer-events: none;
 }
@@ -268,13 +273,13 @@ p { margin: 0; }
 .zones-y.left { left: 0; }
 .zones-y.right { right: 0; }
 .zones li { flex: 1; display: flex; align-items: center; justify-content: center; }
-.zones-x li + li { border-left: 1px solid var(--color-border); }
-.zones-y li + li { border-top: 1px solid var(--color-border); }
+.zones-x li + li { border-left: 1px solid var(--color-frame-thin); }
+.zones-y li + li { border-top: 1px solid var(--color-frame-thin); }
 
 .sheet-frame {
   position: relative;
   flex: 1;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-frame-thin);
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: 1fr auto;
@@ -311,29 +316,29 @@ p { margin: 0; }
   grid-column: 2;
   grid-row: 2;
   margin: 0;
-  border-top: 1px solid var(--color-border);
-  border-left: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-frame-thin);
+  border-left: 1px solid var(--color-frame-thin);
   display: grid;
   grid-template-columns: auto auto;
   font-size: var(--text-caption);
 }
 .title-block div { display: contents; }
 .title-block dt,
-.title-block dd { margin: 0; padding: 8px 16px; border-bottom: 1px solid var(--color-border); }
+.title-block dd { margin: 0; padding: 8px 16px; border-bottom: 1px solid var(--color-frame-thin); }
 .title-block div:last-child dt,
 .title-block div:last-child dd { border-bottom: none; }
-.title-block dt { color: var(--color-muted); border-right: 1px solid var(--color-border); }
+.title-block dt { color: var(--color-muted); border-right: 1px solid var(--color-frame-thin); }
 
 /* ===== Hero: drawing views ===== */
 /* Units are mm. Wide lines for visible edges, narrow gold lines for centre lines,
    hatching and dimensions (ISO 128). The strip is drawn at 3.5px per mm. */
 .sheet-drawing { display: block; overflow: visible; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.sheet-drawing .edge { stroke: var(--color-muted); stroke-width: 0.36; }
-.sheet-drawing .thin { stroke: var(--color-gold); stroke-width: 0.21; }
+.sheet-drawing .edge { stroke: var(--color-ink); stroke-width: 0.36; }
+.sheet-drawing .thin { stroke: var(--color-ink-thin); stroke-width: 0.21; }
 .sheet-drawing .center { stroke-dasharray: 5 1 0.6 1; }
 .sheet-drawing .cut { stroke-width: 0.5; }
-.sheet-drawing marker path { fill: var(--color-gold); stroke: none; }
-.sheet-drawing .dim-text { fill: var(--color-muted); stroke: none; font-size: 3.1px; }
+.sheet-drawing marker path { fill: var(--color-ink-thin); stroke: none; }
+.sheet-drawing .dim-text { fill: var(--color-ink); stroke: none; font-size: 3.1px; }
 
 /* Pictorial view, top right corner of the frame */
 .drawing-iso {

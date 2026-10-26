@@ -200,7 +200,7 @@ Not built yet. Keep the same header, footer, write-up, meta strip and key figure
 - **No JS:** hidden starting states are set from JS only, so without JS everything is visible.
 - **Restraint:**
   - one orchestrated page-load moment per page,
-  - scroll reveals only for tiles and figures,
+  - scroll reveals, once each, only for tiles, figures, About and Skills (each ≤ ~1.2s),
   - motion that answers the user (hover, filter) is fine.
   - No fade-up on every heading.
 - **Easing:** `power3.out` for entrances, `power2.inOut` for transitions, `none` for scroll-scrubbed values.
@@ -208,7 +208,9 @@ Not built yet. Keep the same header, footer, write-up, meta strip and key figure
 | Where | What happens | Details |
 |---|---|---|
 | Homepage load | The header drops in, the grid fades in, the zone markers tick in, the title-block rows slide in, the name letters rise, then the kicker, lead and buttons | Timeline; header 0.6s. Letters use `SplitText` chars with `mask: "chars"`, `yPercent: 110`, stagger 0.035, after `document.fonts.ready` |
-| Homepage drawing | Same timeline: the gear views are drafted in order: centre lines, outlines, hatching, then dimensions | Centre lines fade at 1.1s. `.edge` paths (`pathLength="1"`) draw via `strokeDashoffset` 1 to 0 over 1.4s, `power2.inOut`, from 1.3s. Hatching at 2.3s, dimensions at 2.5s |
+| Homepage drawing | The iso gear is drawn top to bottom, starting with the name letters. The strip is drafted in order: centre lines, outlines, hatching, then dimensions | Line art goes through `drawable()` in `main.js`, which splits multi-subpath paths (they would pop in), sets `pathLength="1"` and sorts top to bottom; `strokeDashoffset` 1 to 0, `power2.inOut`. Iso: 0.9s per piece, stagger amount 0.8, same delay as the letters. Strip: centre lines 0.9s, outlines 1.1s (1.2s each), hatching 1.9s, dimensions 2.1s |
+| About | Once at `top 75%`: the photo zooms in while the text is written line by line | Photo scale 0.9 to 1 with fade, 0.8s `power3.out`. `SplitText` lines, `clipPath` inset 100% to 0 from the right edge, 0.35s each, stagger amount 0.5, then `revert()` |
+| Skills | Once at `top 75%`, cell by cell (0.15s apart): the gold icon is drafted, then the heading and list items | Icons via `drawable()`, 0.6s. Text y 8 to 0 with fade, 0.4s, stagger 0.04, from 0.3s into each cell |
 | Tiles | Stagger in once on scroll | `ScrollTrigger.batch`, start `top 88%`, y 32 to 0, stagger 0.1 |
 | Tile hover | The image zooms to 1.06 and drifts up to ±6px toward the pointer | `gsap.quickTo` on x/y, 0.5s |
 | Filter | Tiles reflow; leavers shrink and fade, enterers grow in | `Flip.from`, 0.6s, `absolute: true`. The filter still works without GSAP |

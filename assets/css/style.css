@@ -254,6 +254,7 @@ p { margin: 0; }
 
 .hero-text {
   grid-column: 1 / -1;
+  grid-row: 1;
   align-self: center;
   padding: clamp(32px, 5vw, 64px);
 }
@@ -294,6 +295,38 @@ p { margin: 0; }
 .title-block div:last-child dt,
 .title-block div:last-child dd { border-bottom: none; }
 .title-block dt { color: var(--color-muted); border-right: 1px solid var(--color-border); }
+
+/* ===== Hero: drawing views ===== */
+/* Units are mm. Wide lines for visible edges, narrow gold lines for centre lines,
+   hatching and dimensions (ISO 128). The strip is drawn at 3.5px per mm. */
+.sheet-drawing { display: block; overflow: visible; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.sheet-drawing .edge { stroke: var(--color-muted); stroke-width: 0.36; }
+.sheet-drawing .thin { stroke: var(--color-gold); stroke-width: 0.21; }
+.sheet-drawing .center { stroke-dasharray: 5 1 0.6 1; }
+.sheet-drawing .cut { stroke-width: 0.5; }
+.sheet-drawing marker path { fill: var(--color-gold); stroke: none; }
+.sheet-drawing .dim-text { fill: var(--color-muted); stroke: none; font-size: 3.1px; }
+
+/* Pictorial view, top right corner of the frame */
+.drawing-iso {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  justify-self: end;
+  width: clamp(140px, 17vw, 220px);
+  margin: clamp(24px, 3vw, 40px);
+}
+.drawing-iso .edge { stroke-width: 0.2; }
+
+/* Front view and section A-A, bottom left beside the title block */
+.drawing-views {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: end;
+  width: 420px;
+  max-width: calc(100% - 2 * clamp(32px, 5vw, 64px));
+  margin: 0 clamp(32px, 5vw, 64px) 20px;
+}
 
 /* ===== Placeholder boxes (remove once real images are in) ===== */
 .placeholder {
@@ -613,8 +646,10 @@ model-viewer {
   .zones-y { top: 20px; bottom: 20px; width: 20px; }
   .zones .wide { display: none; }
   .sheet-frame { grid-template-columns: 1fr; }
-  .hero-text { padding: 40px 20px; }
-  .title-block { grid-column: 1; border-left: none; }
+  .hero-text { grid-row: 2; padding: 16px 20px 40px; }
+  .title-block { grid-column: 1; grid-row: 3; border-left: none; }
+  .drawing-iso { grid-column: 1; width: 120px; margin: 20px 20px 0; }
+  .drawing-views { display: none; }
 
   .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 12px; }
   .project-card p { display: none; }

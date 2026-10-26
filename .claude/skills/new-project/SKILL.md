@@ -19,7 +19,7 @@ Add a new project to the portfolio: $ARGUMENTS
 2. **Pick a slug**: lowercase-hyphenated, e.g. `fs-suspension`. Page goes at `projects/<slug>.html`.
 
 3. **Create the page** by copying `projects/project-template.html`:
-   - Set `<title>` to `<Project Title> | Matteo Deliquori` and the `<h1>`.
+   - Set `<title>` to `<Project Title> | Matteo De Liquori` and the `<h1>`.
    - Add a `<meta name="description">` (the template lacks one).
    - Fill the kicker, `.model-step` items, side label, meta strip, write-up and key figures. Remove the "Copy this file…" comment.
    - Keep the shared header/footer identical to the other project pages and keep `../` relative paths.

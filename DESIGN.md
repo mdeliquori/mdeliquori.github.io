@@ -35,7 +35,7 @@ All tokens are CSS variables in `:root` of `assets/css/style.css`. Never hardcod
 | `--color-border` | `#212121` | Default 1px hairline: sections, cards, tables |
 | `--color-border-strong` | `#474747` | Sheet border, dashed "soon" borders, link underlines |
 | `--color-white` | `#ffffff` | Primary pill fill, focus ring |
-| `--color-gold` | `#6f6759` | Icon strokes and drawing zone markers only, never text |
+| `--color-gold` | `#6f6759` | Icon strokes, drawing zone markers and thin drawing lines only, never text |
 | `--color-live` | `#98ff38` | The status dot only |
 | `--grid-line` | `rgba(243,243,243,.05)` | Blueprint grid lines |
 | `--grid-line-strong` | `rgba(243,243,243,.09)` | Small grid inside tile plates |
@@ -109,11 +109,11 @@ There's no accent colour. Hierarchy comes from contrast between chalk, muted and
 A ┌──────────────────────────────────┐ A
 │ │ Mechanical engineering student   │ │   ← .hero-kicker
 │ │ Matteo                           │ │   ← h1, one <span> per line
-B │ Deliquori                        │ B
+B │ De Liquori                       │ B
 │ │ lead paragraph                   │ │
-│ │ (View projects) [Download CV]    │ │
-C │                  ┌─────────────┐ │ C
-│ │                  │ title block │ │ │   ← dl.title-block
+│ │ (View projects) [Download CV]    │ │   iso view top right: svg.drawing-iso
+C │ front + A–A      ┌─────────────┐ │ C   ← svg.drawing-views (bottom left)
+│ │ with dimensions  │ title block │ │ │   ← dl.title-block
 │ └──────────────────┴─────────────┘ │
 └─1──────2──────3──────4──────5──────6─┘
 Projects                       (All)(Hardware)(Software)
@@ -122,6 +122,15 @@ About    photo | serif text
 Skills   3 bordered cells, gold icons
 Contact  large email, links
 ```
+- **Drawing views (`svg.sheet-drawing`):** real drawing views of the stand-in gear, inline SVG in mm, `aria-hidden`.
+  - `.drawing-iso`: iso pictorial, top right of the frame, no dimensions. Outlines come from `tools/mesh-to-svg.py`, with hidden lines removed.
+  - `.drawing-views`: front view plus section A–A, bottom left beside the title block, drawn at 3.5px per mm. It uses first-angle projection (the section sits to the right) and ISO 2203 gear conventions (teeth unhatched, pitch line dash-dot). Dimension arrows come from the `#dim-arrow` marker.
+  - Line types (ISO 128):
+    - `.edge`: visible outlines, `--color-muted`, wide.
+    - `.thin`: centre, hatch, cut and dimension lines, `--color-gold`, narrow.
+    - `.center`: dash-dot.
+    - `.dim-text`: `--color-muted`.
+  - Phones: the iso view sits small above the text and the dimensioned strip is hidden.
 - **Tile (`.project-card`):**
   - a square `.card-plate` (8px radius, 1px border, a 20px grid on `--color-bg-deep`) with the image cropped to fill,
   - the title (16px) and a one-line muted summary (hidden on phones),
@@ -191,6 +200,7 @@ Not built yet. Keep the same header, footer, write-up, meta strip and key figure
 | Where | What happens | Details |
 |---|---|---|
 | Homepage load | The header drops in, the grid fades in, the zone markers tick in, the title-block rows slide in, the name letters rise, then the kicker, lead and buttons | Timeline; header 0.6s. Letters use `SplitText` chars with `mask: "chars"`, `yPercent: 110`, stagger 0.035, after `document.fonts.ready` |
+| Homepage drawing | Same timeline: the gear views are drafted in order: centre lines, outlines, hatching, then dimensions | Centre lines fade at 1.1s. `.edge` paths (`pathLength="1"`) draw via `strokeDashoffset` 1 to 0 over 1.4s, `power2.inOut`, from 1.3s. Hatching at 2.3s, dimensions at 2.5s |
 | Tiles | Stagger in once on scroll | `ScrollTrigger.batch`, start `top 88%`, y 32 to 0, stagger 0.1 |
 | Tile hover | The image zooms to 1.06 and drifts up to ±6px toward the pointer | `gsap.quickTo` on x/y, 0.5s |
 | Filter | Tiles reflow; leavers shrink and fade, enterers grow in | `Flip.from`, 0.6s, `absolute: true`. The filter still works without GSAP |

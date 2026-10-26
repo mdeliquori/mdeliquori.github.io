@@ -49,10 +49,11 @@ GitHub Pages is case-sensitive; Windows is not. A link that works locally can 40
   `<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>`
   Always set a `poster` render (transparent PNG) and keep static images on the page as the primary visual; the 3D view is an extra.
   Convert a single-body `.3mf` with `python tools/3mf-to-glb.py in.3mf assets/models/<slug>.glb assets/renders/<slug>-poster.png`. It is stdlib only. It centres the mesh, scales mm → m, goes Z-up → Y-up and smooths normals. The extracted poster has a white background, so make it transparent (e.g. a Pillow flood fill from the corners). Don't commit source CAD files (`.3mf`, `.stl`, `.step`).
+- Homepage drawing views: `python tools/mesh-to-svg.py in.3mf top|front|right|iso` prints visible-edge SVG path data (hidden lines removed). It is stdlib only. The section and dimensions around it are hand-drawn in mm; see `DESIGN.md`.
 
 ## Placeholder content
 
-Email, LinkedIn URL, About text, profile photo, project images, and `assets/docs/CV.pdf` are still placeholders. Unfilled text is in `[square brackets]`, and `CONTENT.md` lists where everything goes. Never invent real-looking personal details or project results. Leave a clear placeholder and tell the user.
+The name, email, LinkedIn and `assets/docs/CV.pdf` are real. The About text, profile photo and project images are still placeholders. Unfilled text is in `[square brackets]`, and `CONTENT.md` lists where everything goes. Never invent real-looking personal details or project results. Leave a clear placeholder and tell the user.
 
 ## Git
 
@@ -67,7 +68,7 @@ The redesign is complete and merged into `main` locally. It needs the user to pu
 - `DESIGN.md`, `CONTENT.md` and `tools/3mf-to-glb.py`.
 
 - **Placeholders the user fills in (see `CONTENT.md`):**
-  - email, LinkedIn, About text, profile photo, `assets/docs/CV.pdf`,
+  - About text, profile photo,
   - all project copy and key figures,
   - a `.glb` of the servo mount. `assets/models/zahnrad-14.glb` is a stand-in gear.
 - **Next:**

@@ -75,6 +75,22 @@ if (hasGsap) {
         .from(".title-block > div", { autoAlpha: 0, x: 12, duration: 0.4, stagger: 0.08 }, 0.5)
         .from([".hero-kicker", ".lead", ".hero-actions"], { autoAlpha: 0, y: 16, duration: 0.6, stagger: 0.12 }, 0.9);
 
+      // Then the gear views are drafted in order: centre lines, outlines, hatching, dimensions
+      const edges = hero.querySelectorAll(".sheet-drawing .edge");
+      if (edges.length) {
+        gsap.set(edges, { strokeDasharray: 1, strokeDashoffset: 1 });
+        tl.from(hero.querySelectorAll(".sheet-drawing .center, .sheet-drawing .cut"), { autoAlpha: 0, duration: 0.4, stagger: 0.08 }, 1.1)
+          .to(edges, {
+            strokeDashoffset: 0,
+            duration: 1.4,
+            ease: "power2.inOut",
+            stagger: 0.2,
+            onComplete: () => gsap.set(edges, { clearProps: "strokeDasharray,strokeDashoffset" })
+          }, 1.3)
+          .from(hero.querySelectorAll(".sheet-drawing .hatch"), { autoAlpha: 0, duration: 0.5 }, 2.3)
+          .from(hero.querySelectorAll(".drawing-views .thin:not(.center, .cut, .hatch), .dim-text"), { autoAlpha: 0, duration: 0.5, stagger: 0.1 }, 2.5);
+      }
+
       // Split once the web font is in, so the letters are measured correctly
       document.fonts.ready.then(() => {
         if (!window.SplitText) return gsap.set(name, { autoAlpha: 1 });

@@ -421,7 +421,7 @@ p { margin: 0; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   gap: 48px;
-  align-items: start;
+  align-items: center;
 }
 .about-photo {
   width: 100%;
